@@ -1535,3 +1535,5 @@ window.addEventListener('scroll', () => {
 
 // Initial call
 regenerateBubbles();
+
+

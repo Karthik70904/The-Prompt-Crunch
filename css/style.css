@@ -943,6 +943,11 @@ footer,
 }
 
 
+body.loading main,
+body.loading footer,
+body.loading .navbar {
+  display: none;
+}
 
 /* Mobile Toggle Button */
 .nav-toggle {
