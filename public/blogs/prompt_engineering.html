@@ -77,21 +77,19 @@
   </div>
 </nav> -->
 
-
-<!-- ...existing code... -->
 <nav class="navbar">
   <div class="nav-container">
     <div class="nav-logo">
       <span class="logo-icon">🧠</span>
-      <span class="logo-text">PromptBlog</span>
+      <span class="logo-text">Prompt Crunch</span>
     </div>
     <ul class="nav-menu">
-      <li><a href="/index.html"class="nav-link">Home</a></li>
+      <li><a href="/index.html" class="nav-link">Home</a></li>
       <li><a href="/public/blogs/prompt_engineering.html" class="nav-link active">Blog</a></li>
-      <!-- <li><a href="#contact" class="nav-link">Contact</a></li> -->
     </ul>
+
     <!-- Hamburger Icon for Mobile (right side) -->
-    <button class="nav-toggle" aria-label="Open menu"onclick="toggleMenu()">
+    <button class="nav-toggle" aria-label="Open menu">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
@@ -100,10 +98,10 @@
 </nav>
 
 <script>
-  // Hamburger menu toggle
   document.addEventListener('DOMContentLoaded', function () {
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
+
     navToggle.addEventListener('click', () => {
       navToggle.classList.toggle('active');
       navMenu.classList.toggle('show');
@@ -111,28 +109,6 @@
   });
 </script>
 
-<script>
-  function toggleMenu() {
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    navToggle.classList.toggle('active');
-    navMenu.classList.toggle('show');
-  }
-
-  // Attach the function to the button
-  document.addEventListener('DOMContentLoaded', function () {
-    const navToggle = document.querySelector('.nav-toggle');
-    navToggle.addEventListener('click', toggleMenu);
-  });
-</script>
-
-<!-- ...existing code... -->
-
-<!-- <script> 
-    document.querySelector('.nav-link').addEventListener('click', function(e) {
-  e.preventDefault(); // This stops the link from working
-});
-</script> -->
 
 
 
