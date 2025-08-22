@@ -275,7 +275,7 @@
     const counterRef = doc(db, "siteStats", "visitors");
 
     try {
-      // Prevent multiple increments from same user
+      // Only increment once per browser/device
       if (!localStorage.getItem("hasVisited")) {
         const snap = await getDoc(counterRef);
 
