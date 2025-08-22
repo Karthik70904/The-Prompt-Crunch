@@ -134,9 +134,11 @@ body.loading header,
 body.loading .navbar,
 body.loading main,
 body.loading section,
-body.loading footer {
+body.loading footer,
+body.loading .view-counter-btn {
   display: none !important;
 }
+
 
 /* Optional: Prevent scroll during loading */
 body.loading {
@@ -157,7 +159,6 @@ body:not(.loading) footer {
   display: block;
   opacity: 1;
 }
-
 
 body {
     font-family: var(--font-family);
@@ -3141,4 +3142,29 @@ footer,
   color: inherit;
   text-decoration: none;
   pointer-events: auto; /* ensure links are clickable */
+}
+
+
+
+
+
+.view-counter-btn {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: var(--space-md) var(--space-2xl);
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    font-weight: 500;
+    font-size: var(--font-size-base);
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-medium);
+}
+
+.view-counter-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* optional spacing */
+  text-align: center;
+  margin-top: 20px;
 }

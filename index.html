@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="/css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="/images/fav.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="loading">
@@ -241,6 +242,68 @@
             </div>
         </div>
     </section>
+
+<div class="view-counter-container">
+  <button class="view-counter-btn">
+    Blog Views: <span id="viewCount">0</span>
+  </button>
+</div>
+
+<script type="module">
+  // Import Firebase SDKs
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+  import { getFirestore, doc, getDoc, setDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+  import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js";
+
+  // Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyBmRg291KyLolkd0hLHBC3pgTPsquX0UHc",
+    authDomain: "my-blog-e32a0.firebaseapp.com",
+    projectId: "my-blog-e32a0",
+    storageBucket: "my-blog-e32a0.appspot.com",
+    messagingSenderId: "755498846104",
+    appId: "1:755498846104:web:03273e0139dbc8b934cded",
+    measurementId: "G-7FB0THHK0B"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const db = getFirestore(app);
+
+  async function updateCounter() {
+    const counterRef = doc(db, "siteStats", "visitors");
+
+    try {
+      // Prevent multiple increments from same user
+      if (!localStorage.getItem("hasVisited")) {
+        const snap = await getDoc(counterRef);
+
+        if (snap.exists()) {
+          await updateDoc(counterRef, { count: increment(1) });
+        } else {
+          await setDoc(counterRef, { count: 1 });
+        }
+
+        localStorage.setItem("hasVisited", "true");
+        logEvent(analytics, "visitor_count_incremented");
+      }
+
+      // Always fetch and update the display
+      const updatedSnap = await getDoc(counterRef);
+      if (updatedSnap.exists()) {
+        document.getElementById("viewCount").innerText = updatedSnap.data().count;
+      }
+
+    } catch (error) {
+      console.error("Error updating counter:", error);
+    }
+  }
+
+  updateCounter();
+</script>
+
+
 
 <footer class="footer">
   <div class="footer-content">
