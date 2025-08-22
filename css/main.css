@@ -518,7 +518,7 @@ body::after {
     /* cursor: pointer; */
     font-weight: 500;
     font-size: var(--font-size-base);
-    transition: all var(--transition-fast);
+    /* transition: all var(--transition-fast); */
     box-shadow: var(--shadow-medium);
 }
 
