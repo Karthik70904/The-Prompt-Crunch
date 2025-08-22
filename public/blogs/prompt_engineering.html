@@ -354,62 +354,50 @@
     Blog Views: <span id="viewCount">0</span>
   </button>
 </div>
-
 <script type="module">
-  // Import Firebase SDKs
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-  import { getFirestore, doc, getDoc, setDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
-  import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { getFirestore, doc, getDoc, setDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
-  // Firebase config
-  const firebaseConfig = {
-    apiKey: "AIzaSyBmRg291KyLolkd0hLHBC3pgTPsquX0UHc",
-    authDomain: "my-blog-e32a0.firebaseapp.com",
-    projectId: "my-blog-e32a0",
-    storageBucket: "my-blog-e32a0.appspot.com",
-    messagingSenderId: "755498846104",
-    appId: "1:755498846104:web:03273e0139dbc8b934cded",
-    measurementId: "G-7FB0THHK0B"
-  };
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBmRg291KyLolkd0hLHBC3pgTPsquX0UHc",
+      authDomain: "my-blog-e32a0.firebaseapp.com",
+      projectId: "my-blog-e32a0",
+      storageBucket: "my-blog-e32a0.appspot.com",
+      messagingSenderId: "755498846104",
+      appId: "1:755498846104:web:03273e0139dbc8b934cded",
+      measurementId: "G-7FB0THHK0B"
+    };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  const db = getFirestore(app);
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
 
-  async function updateCounter() {
-    const counterRef = doc(db, "siteStats", "visitors");
+    // Reference to Firestore document
+    const counterDoc = doc(db, "counters", "views");
 
-    try {
-      // Prevent multiple increments from same user
-      if (!localStorage.getItem("hasVisited")) {
-        const snap = await getDoc(counterRef);
-
-        if (snap.exists()) {
-          await updateDoc(counterRef, { count: increment(1) });
+    async function updateViewCount() {
+      try {
+        const docSnap = await getDoc(counterDoc);
+        if (!docSnap.exists()) {
+          // Create document with initial count 1
+          await setDoc(counterDoc, { count: 1 });
+          document.getElementById("viewCount").textContent = 1;
         } else {
-          await setDoc(counterRef, { count: 1 });
+          // Increment existing count
+          await updateDoc(counterDoc, { count: increment(1) });
+          const updatedSnap = await getDoc(counterDoc);
+          document.getElementById("viewCount").textContent = updatedSnap.data().count;
         }
-
-        localStorage.setItem("hasVisited", "true");
-        logEvent(analytics, "visitor_count_incremented");
+      } catch (error) {
+        console.error("Error updating view count:", error);
       }
-
-      // Always fetch and update the display
-      const updatedSnap = await getDoc(counterRef);
-      if (updatedSnap.exists()) {
-        document.getElementById("viewCount").innerText = updatedSnap.data().count;
-      }
-
-    } catch (error) {
-      console.error("Error updating counter:", error);
     }
-  }
 
-  updateCounter();
-</script>
+    // Update the counter on page load
+    updateViewCount();
+  </script>
 
-    
 <footer class="footer">
     <div class="footer-content">
         <!-- Blog Description -->

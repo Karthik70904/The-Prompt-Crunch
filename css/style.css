@@ -3154,7 +3154,7 @@ footer,
     padding: var(--space-md) var(--space-2xl);
     border: none;
     border-radius: var(--radius-lg);
-    cursor: pointer;
+    /* cursor: pointer; */
     font-weight: 500;
     font-size: var(--font-size-base);
     transition: all var(--transition-fast);
