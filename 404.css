@@ -1,0 +1,234 @@
+/* 404 Page Container */
+.page_404 {
+  margin-top: 130px;
+  padding: 50px 20px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  /* background-color: #000; optional background */
+  background-position: 50%;
+  background-blend-mode: multiply;
+  background-image: url('bg.gif');
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;  /* Align content to top */
+  align-items: center;
+}
+
+/* 404 Titles */
+.four_zero_four_bg h1,
+.four_zero_four_bg h3 {
+  margin: 10px 0;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.four_zero_four_bg h1 {
+  font-size: 6rem;
+}
+
+.four_zero_four_bg h3 {
+  font-size: 2rem;
+}
+
+/* 404 Image (GIF) */
+.page_404 img {
+  width: 30%;
+  max-width: 300px;
+  height: auto;
+  margin: 20px 0 40px 0; /* gap below text */
+  display: block;
+}
+
+/* 404 Button */
+.link_404 {
+  /*  margin-top: 20px; */
+    text-decoration: none;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  text-align: center;
+    color: white;
+    padding: var(--space-md) var(--space-2xl);
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    font-weight: 500;
+    font-size: var(--font-size-base);
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-medium);
+}
+
+.link_404:hover {
+  background: #2d8a26;
+  transform: scale(1.05);
+}
+
+/* 404 Button */
+.link_404 {
+  margin-top: 80px; /* increased from 20px to move it further down */
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: var(--space-md) var(--space-2xl);
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: var(--font-size-base);
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-medium);
+}
+
+.link_404:hover {
+  background: #2d8a26;
+  transform: scale(1.05);
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .four_zero_four_bg h1 { font-size: 4rem; }
+  .four_zero_four_bg h3 { font-size: 1.5rem; }
+  .page_404 img { width: 50%; max-width: 200px; }
+}
+
+@media (max-width: 480px) {
+  .four_zero_four_bg h1 { font-size: 3rem; }
+  .four_zero_four_bg h3 { font-size: 1.2rem; }
+  .page_404 img { width: 70%; max-width: 150px; }
+}
+
+
+/* 404 Image (GIF) */
+.page_404 img {
+  width: 30%;          /* scales relative to parent */
+  max-width: 300px;    /* never exceed 300px */
+  height: auto;        /* maintains aspect ratio */
+  margin: 20px 0 40px 0;
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .page_404 img {
+    width: 50%;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page_404 img {
+    width: 70%;
+    max-width: 150px;
+  }
+}
+
+
+.page_404 img {
+  width: clamp(150px, 30%, 300px);
+  height: auto;
+  margin: 20px 0 40px 0;
+  display: block;
+}
+
+h1 {
+  position: relative;
+  top: -150px;
+  font-size: clamp(3rem, 6vw, 6rem);
+  text-align: center;
+}
+
+.view-counter-btn {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: var(--space-md) var(--space-2xl);
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    font-weight: 500;
+    font-size: var(--font-size-base);
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-medium);
+    align-content: center;
+    align-self: center;
+    margin-left: 1200px;
+    margin-top: -100px;
+}
+
+.view-counter-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* optional spacing */
+  text-align: center;
+  margin-top: 20px;
+}
+.view-counter-btn:hover {
+   transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+}
+/* .btn:hover,
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+} */
+
+/* Hide all sections while loading */
+body.loading .navbar,
+body.loading main,
+body.loading footer,
+body.loading section,
+body.loading header {
+  display: none !important;
+}
+
+/* Optional: prevent scroll during preloader */
+body.loading {
+  overflow: hidden;
+}
+
+main, footer, .navbar, section, header {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+body:not(.loading) main,
+body:not(.loading) footer,
+body:not(.loading) .navbar,
+body:not(.loading) section,
+body:not(.loading) header {
+  opacity: 1;
+}
+
+/* Hide all main sections when body is loading */
+body.loading header,
+body.loading .navbar,
+body.loading main,
+body.loading section,
+body.loading footer,
+body.loading .view-counter-btn {
+  display: none !important;
+}
+
+
+/* Optional: Prevent scroll during loading */
+body.loading {
+  overflow: hidden;
+}
+
+/* Fade-in after loading */
+header, .navbar, main, section, footer {
+  opacity: 0;
+  transition: opacity 0.6s ease-in;
+}
+
+/* body:not(.loading) header, */
+body:not(.loading) .navbar,
+body:not(.loading) main,
+body:not(.loading) section,
+body:not(.loading) footer {
+  display: block;
+  opacity: 1;
+}
