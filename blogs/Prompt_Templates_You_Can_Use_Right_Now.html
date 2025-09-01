@@ -23,20 +23,6 @@
   <link rel="stylesheet" href="/css/style.css">
   <link rel="icon" type="image/png" href="/images/fav.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-
-  <!-- Hotjar Tracking Code for Site 6507228 (name missing) -->
-<script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:6507228,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
-
 </head>
 <body class="loading">
 
@@ -361,6 +347,28 @@ function shareOnWhatsApp() {
     <p><strong>NAGA SAI KARTHIK KANAKAGIRI</strong></p>
   </div>
 </footer>
+<script>
+  // Social sharing functions
+function shareOnTwitter() {
+    const url = window.location.href;
+    const text = "Discover ready-to-use Prompt Templates that supercharge your AI workflow! 🚀 Whether you're a beginner or a seasoned pro, this guide offers practical examples to level up your prompt engineering game. #PromptEngineering #AItools #ProductivityBoost";
+    const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
+    window.open(twitterUrl, '_blank', 'width=550,height=420');
+}
 
+function shareOnLinkedIn() {
+    const url = window.location.href;
+    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+    window.open(linkedInUrl, '_blank', 'width=520,height=570');
+}
+
+function shareOnWhatsApp() {
+    const url = window.location.href;
+    const text = "Discover ready-to-use Prompt Templates that supercharge your AI workflow! 🚀 Whether you're a beginner or a seasoned pro, this guide offers practical examples to level up your prompt engineering game. #PromptEngineering #AItools #ProductivityBoost";
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
+    window.open(whatsappUrl, '_blank');
+}
+
+</script>
 </body>
 </html>
